@@ -159,32 +159,47 @@ const finalCurrencyFlagChange = () => {
        finalFlag.src = "./assets/real.svg"
        finalFlag.alt = "Bandeira do Brasil"
        document.querySelector(".lastCurrencyName").innerHTML = "Real"
-       finalValue.innerHTML = convertButton()
     }
     
     else if (finalCurrency.value == "dollar"){
         finalFlag.src = "./assets/dollar.svg"
         finalFlag.alt = "Bandeira dos EUA"
         document.querySelector(".lastCurrencyName").innerHTML = "Dollar"
-        finalValue.innerHTML = convertButton()
     }
     
     else if (finalCurrency.value == "euro"){
         finalFlag.src = "./assets/euro.svg"
         finalFlag.alt = "Bandeira da União Europeia"
         document.querySelector(".lastCurrencyName").innerHTML = "Euro"
-        finalValue.innerHTML = convertButton()
     }
     
     else if (finalCurrency.value == "bitcoin"){
         finalFlag.src = "./assets/bitcoin.svg"
         finalFlag.alt = "Simbolo do Bitcoin"
         document.querySelector(".lastCurrencyName").innerHTML = "Bitcoin"
+    }
+}
+const valueConverted = () => {
+    const finalValue = document.querySelector(".finalValue")
+
+    if (finalCurrency.value == "real"){
+       finalValue.innerHTML = convertButton()
+    }
+    
+    else if (finalCurrency.value == "dollar"){
+        finalValue.innerHTML = convertButton()
+    }
+    
+    else if (finalCurrency.value == "euro"){
+        finalValue.innerHTML = convertButton()
+    }
+    
+    else if (finalCurrency.value == "bitcoin"){
         finalValue.innerHTML = convertButton()
     }
 }
 
-convert_Button.addEventListener("click", () => console.log(convertButton()))
+convert_Button.addEventListener("click", valueConverted)
 convert_Button.addEventListener("click", convertButton)
 initialCurrency.addEventListener("change", initialCurrencyValue)
 initialCurrency.addEventListener("change", flagChange)
