@@ -60,6 +60,7 @@ select, input {
     border: 1px solid #BBBBBB;
     appearance: none;
     outline: none;
+    width: 93%;
 }
 span {
     color: #555;
