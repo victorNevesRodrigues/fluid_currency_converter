@@ -6,7 +6,6 @@ const dollar = 4.77
 const euro = 5.23
 const bitcoin = 227736.56
 
-
 const convertButton = (result) => {
 
     // From Real To Another Currency
