@@ -156,6 +156,7 @@ button:active{
 
     select, button, input {
         height: 6rem;
+        font-size: 2rem;
     }
 
     button {
