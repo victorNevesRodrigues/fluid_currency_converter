@@ -2,11 +2,14 @@ const initialCurrency= document.querySelector("#initialCurrency")
 const finalCurrency= document.querySelector("#convertTo")
 const valueToBeConverted = document.querySelector("#value")
 const convert_Button = document.querySelector("button")
-const dollar = 4.77
-const euro = 5.23
-const bitcoin = 227736.56
 
-const convertButton = (result) => {
+
+const convertButton = async (result) => {
+    const data = await fetch("https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL").then(response => response.json())
+    const dollar = data.USDBRL.bid
+    const euro = data.EURBRL.bid
+    const bitcoin = data.BTCBRL.bid * 1000
+    
 
     // From Real To Another Currency
   
@@ -104,8 +107,11 @@ const convertButton = (result) => {
 
     else if (initialCurrency.value == "bitcoin" && finalCurrency.value == "bitcoin") {
         result = valueToBeConverted.value }
-                return result
+    return result
 }
+
+
+
 const initialCurrencyValue = () => {
     return initialCurrency.value
 }
@@ -178,28 +184,37 @@ const finalCurrencyFlagChange = () => {
         document.querySelector(".lastCurrencyName").innerHTML = "Bitcoin"
     }
 }
+
 const valueConverted = () => {
     const finalValue = document.querySelector(".finalValue")
 
     if (finalCurrency.value == "real"){
-       finalValue.innerHTML = convertButton()
+        convertButton().then((result) => {
+        finalValue.innerHTML = result
+       })
     }
     
     else if (finalCurrency.value == "dollar"){
-        finalValue.innerHTML = convertButton()
+        convertButton().then((result) => {
+            finalValue.innerHTML = result
+           })
     }
     
     else if (finalCurrency.value == "euro"){
-        finalValue.innerHTML = convertButton()
+        convertButton().then((result) => {
+            finalValue.innerHTML = result
+           })
     }
     
     else if (finalCurrency.value == "bitcoin"){
-        finalValue.innerHTML = convertButton()
+        convertButton().then((result) => {
+            finalValue.innerHTML = result
+           })
     }
 }
 
+// convert_Button.addEventListener("click", convertButton)
 convert_Button.addEventListener("click", valueConverted)
-convert_Button.addEventListener("click", convertButton)
 initialCurrency.addEventListener("change", initialCurrencyValue)
 initialCurrency.addEventListener("change", flagChange)
 finalCurrency.addEventListener("change", finalCurrencyValue)
